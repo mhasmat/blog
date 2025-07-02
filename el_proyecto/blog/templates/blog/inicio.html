@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloggero - Inicio</title>
+</head>
+<body style="background-color: rgb(144, 185, 186);">
+
+    <div style="background-color: rgb(224, 224, 188); border-radius: 15px; width: 97vw; height: 20vh; display: flex; align-items: center; justify-content: center;">
+        <h1>¡Bienvenido a mi Blog!</h1> 
+    </div>
+    <hr>
+    <div style="background-color: rgb(224, 224, 188); border-radius: 15px; width: 97vw; height: 20vh; display: flex; align-items: center; justify-content: center;">
+        <ul>
+            <li><a href="{% url 'blog:lista_posts' %}" style="text-decoration: none; font-weight: bold; color: black;">🤓 Aprendiendo Django</a></li>
+            <li style="font-weight: bold;">📝 Consejos y Apuntes</li>        
+            <li><a href="{% url 'blog:about' %}" style="text-decoration: none;font-weight: bold; color: black;">👨🏽‍💻 About me</a></li>
+        </ul>
+    </div>
+    <hr>
+    <div style="background-color: rgba(215, 215, 127, 0.231); border-radius: 15px; width: 97vw; height: 35vh; display: flex; align-items: center; justify-content: center;">
+    </div>    
+    <hr>
+</body>
+<footer>
+    <div style="background-color: rgb(224, 224, 188); border-radius: 15px; width: 97vw; height: 10vh; display: flex; align-items: center; justify-content: center;">
+        <b>Martín Alejandro Hasmat | 2025 | ®</b>
+    </div>
+</footer>
+</html>
