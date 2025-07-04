@@ -14,8 +14,8 @@ def lista_posts(request):
 
 def detalle_post(request, id):
   post = get_object_or_404(Post, id=id, publicado=True)
-  comentarios = post.comentarios.all()
-
+  comentarios = post.comentarios.all().order_by('-fecha')
+    
   if request.method == 'POST':
     form = ComentarioForm(request.POST)
 
@@ -23,11 +23,12 @@ def detalle_post(request, id):
       nuevo_comentario = form.save(commit=False)
       nuevo_comentario.post = post
       nuevo_comentario.save()
+
       return HttpResponseRedirect(request.path) #redirige a la misma página
 
   else:
     form = ComentarioForm()
-  
+    
   return render(request, 'blog/detalle_post.html', {
     'post': post,
     'comentarios': comentarios,

@@ -15,7 +15,9 @@
                 <a href="/post/{{ post.id }}/">{{ post.titulo }}</a>
             </h2>
             <p>{{ post.contenido|truncatewords:20 }}</p>
-            <a href="/post/{{ post.id }}/" style="color: goldenrod; text-decoration: none;">Leer más</a>
+            <button>
+                <a href="/post/{{ post.id }}/" style="color: goldenrod; text-decoration: none;">Leer más</a>
+            </button>
             <br><br>
             <small>Autor: {{ post.autor }} | Fecha: {{ post.fecha_creacion }}</small>
             {% if post.autor == 'admin' %}
