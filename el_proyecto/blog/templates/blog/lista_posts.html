@@ -11,9 +11,11 @@
     <h1 style="background-color: rgb(224, 224, 188); border-radius: 10px; padding: 5px 15px;">Lista de Posts</h1>
     {% for post in posts %}    
         <article style="background-color: rgb(224, 224, 188); border-radius: 10px; padding: 5px 15px;">
-            <h2>{{ post.titulo }}</h2>
+            <h2>
+                <a href="/post/{{ post.id }}/">{{ post.titulo }}</a>
+            </h2>
             <p>{{ post.contenido|truncatewords:20 }}</p>
-            <a href="#" style="color: goldenrod; text-decoration: none;">Leer más</a>
+            <a href="/post/{{ post.id }}/" style="color: goldenrod; text-decoration: none;">Leer más</a>
             <br><br>
             <small>Autor: {{ post.autor }} | Fecha: {{ post.fecha_creacion }}</small>
             {% if post.autor == 'admin' %}

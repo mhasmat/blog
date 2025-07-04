@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ post.titulo }}</title>
+</head>
+<body>
+  <a href="/blog">Volver a la lista de posts</a>
+  <hr>
+  <h1>{{ post.titulo }}</h1>
+  <p>{{ post.contenido }}</p>
+  <small>Autor: {{ post.autor }} | Fecha: {{ post.fecha_creacion }} | Total {{ post.contenido | wordcount }} Palabras</small>
+  <br>
+  <hr>
+  <h3>Comentarios</h3>
+  {% for comentario in comentarios %}
+    <p><strong>@{{ comentario.autor }}<br></strong>{{ comentario.texto }}</p>
+  {% empty %}
+    <p>Aún no hay comentarios</p>
+  {% endfor %}
+  <br><br>
+  <hr>
+  <h3>Agregar un comentario</h3>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Publicar</button>
+  </form>
+</body>
+</html>
