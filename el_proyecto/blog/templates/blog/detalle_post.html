@@ -22,8 +22,8 @@
   {% empty %}
     <p>Aún no hay comentarios</p>
   {% endfor %}  
-  <small>
-    <b>{{ comentarios|length|default:"0" }}</b> comentarios
+  <small>    
+     <b>{{ comentarios|length|default:"0" }}</b> comentario{{ comentarios|pluralize }}
   </small>
   <hr>
   <h3>Agregar un comentario</h3>
