@@ -14,7 +14,7 @@ class Post(models.Model):
   publicado = models.BooleanField(default=False)
   categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, related_name='posts')
 
-  def __str__(self):
+  def __str__(self):    
     return f"{self.titulo.upper()} - by {self.autor}"
     
 class Comentario(models.Model):
