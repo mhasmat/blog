@@ -8,11 +8,9 @@ def inicio(request):
 def about(request):
   return render(request, 'blog/about.html')
 
-def posts_categoria(request, nombre):
-  # categorias = Categoria.objects.all()
-  # posts = Post.objects.all()
+def posts_categoria(request, nombre):  
   categoria = get_object_or_404(Categoria, nombre=nombre)
-  posts = Post.objects.filter(categoria=categoria)
+  posts = Post.objects.filter(categoria=categoria).order_by('-fecha_creacion')
     
   return render(request, 'blog/posts_categoria.html', {'categoria': categoria, 'posts': posts})
 

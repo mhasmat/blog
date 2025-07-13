@@ -9,8 +9,8 @@
     <a href="{% url 'blog:inicio' %}" style="text-decoration: none;font-weight: bold; color: black;">🔙 Ir a Inicio</a>
     <hr>
     <h1 style="background-color: rgb(224, 224, 188); border-radius: 10px; padding: 5px 15px;">Lista de Posts</h1>
-    <p>Categorias:
-    {% for categoria in categorias %}
+    <p>Filtrar por tema:
+    {% for categoria in categorias|dictsort:'nombre' %}
         <a href="{% url 'blog:posts_categoria' nombre=categoria.nombre %}">{{ categoria.nombre }}</a>
         {% if not forloop.last %}|{% endif %}        
     {% endfor %}
@@ -25,7 +25,7 @@
                 <a href="/post/{{ post.id }}/" style="color: goldenrod; text-decoration: none;">Leer más</a>
             </button>
             <br><br>
-            <small>Autor: {{ post.autor }} | Fecha: {{ post.fecha_creacion }}</small>
+            <small>Autor: <strong>{{ post.autor }}</strong> | Fecha: {{ post.fecha_creacion }}</small>
             {% if post.autor == 'admin' %}
                 <h5 style="color: red; font-style: italic;">Contenido Exclusivo</h5>
             {% endif %}

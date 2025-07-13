@@ -11,7 +11,7 @@
   <p>Categoría:<strong> {{ post.categoria.nombre }}</strong></p>
   <h1>{{ post.titulo }}</h1>
   <p>{{ post.contenido }}</p>
-  <small>Autor: {{ post.autor }} | Fecha: {{ post.fecha_creacion }} | Total {{ post.contenido|wordcount }} Palabras</small>
+  <small>Autor: <strong>{{ post.autor }}</strong> | Fecha: {{ post.fecha_creacion }} | Total {{ post.contenido|wordcount }} Palabras</small>
   <br>
   <hr>
   <h3>Comentarios</h3>

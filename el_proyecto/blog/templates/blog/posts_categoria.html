@@ -10,8 +10,12 @@
   <hr>
   <h1>Posts de la categoría {{ categoria.nombre }}</h1>
   {% for post in posts %}
-    <h4>{{ post.titulo }}</h4>
+    <h3>{{ post.titulo }}</h3>
     <p>{{ post.contenido }}</p>
+    <br>
+    <small>Autor: <strong>{{ post.autor }}</strong> | Fecha: {{ post.fecha_creacion }} | Total {{ post.contenido|wordcount }} palabras</small>
+    <hr>
+    <br>
   {% empty %}
     <p>No hay posts en esta categoría</p>
   {% endfor %}
