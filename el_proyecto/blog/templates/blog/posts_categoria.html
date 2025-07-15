@@ -11,8 +11,11 @@
   <h1>Posts de la categoría {{ categoria.nombre }}</h1>
   {% for post in posts %}
     <h3>{{ post.titulo }}</h3>
-    <p>{{ post.contenido }}</p>
-    <br>
+    <p>{{ post.contenido|truncatewords:30 }}</p>
+    <button>
+      <a href="/post/{{ post.id }}/">Leer más</a>
+    </button>
+    <br><br>    
     <small>Autor: <strong>{{ post.autor }}</strong> | Fecha: {{ post.fecha_creacion }} | Total {{ post.contenido|wordcount }} palabras</small>
     <hr>
     <br>
