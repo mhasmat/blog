@@ -11,15 +11,17 @@
         <h1>¡Bienvenido a mi Blog!</h1> 
     </div>
     <hr>
-    <div style="background-color: rgb(224, 224, 188); border-radius: 15px; width: 97vw; height: 20vh; display: flex; align-items: center; justify-content: center;">
+    <div style="background-color: rgb(224, 224, 188); border-radius: 15px; width: 97vw; height: 23vh; display: flex; align-items: center; justify-content: center;">
         <ul>
             <li><a href="{% url 'blog:lista_posts' %}" style="text-decoration: none; font-weight: bold; color: black;">🤓 Aprendiendo Django</a></li>
             <li style="font-weight: bold;">📝 Consejos y Apuntes</li>        
-            <li><a href="{% url 'blog:about' %}" style="text-decoration: none;font-weight: bold; color: black;">👨🏽‍💻 About me</a></li>            
+            <li><a href="{% url 'blog:about' %}" style="text-decoration: none;font-weight: bold; color: black;">👨🏽‍💻 About me</a></li>
+            <li><a href="{% url 'blog:consultas' %}" style="text-decoration: none;font-weight: bold; color: black;">💬 Querysets</a></li>
+            <li><a href="{% url 'blog:buscar' %}" style="text-decoration: none;font-weight: bold; color: black;">🔎 Buscar Posts</a></li>            
         </ul>
     </div>
     <hr>
-    <div style="background-color: rgba(215, 215, 127, 0.231); border-radius: 15px; width: 97vw; height: 35vh; display: flex; align-items: center; justify-content: center;">
+    <div style="background-color: rgba(215, 215, 127, 0.231); border-radius: 15px; width: 97vw; height: 33vh; display: flex; align-items: center; justify-content: center;">
     </div>    
     <hr>
 </body>

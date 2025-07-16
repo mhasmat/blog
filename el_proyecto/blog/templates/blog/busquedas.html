@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscar en posts</title>
+</head>
+<body>
+  <a href="{% url 'blog:inicio' %}">🔙 Ir a Inicio |</a>
+  <a href="/blog">📑 Ir a la lista de posts</a>
+  <hr>
+
+  {% block content %}  
+  <form method="GET" action="{% url 'blog:buscar' %}">
+    🔎
+    <input 
+      type="text"
+      name="q"
+      value="{{ busqueda }}"
+      placeholder="Buscar en posts..."
+    >
+    <button type="submit">Buscar</button>
+  </form>
+
+  <section>
+    {% if busqueda %}
+      <h3>✅ Resultados para '{{ busqueda }}' ...</h3>
+      {% if resultados %}
+        {% for post in posts %}
+          <article>
+            <h4>{{ post.titulo }}</h4>
+            <p>{{ post.contenido|truncatewords:20 }}</p>
+            <small>{{ post.categoria }} | {{ post.fecha_creacion|date:'d/m/Y' }} | </small>
+            <button>
+              <a href="/post/{{ post.id }}/">Leer más</a>
+            </button>
+          </article><hr>        
+        {% endfor %}
+      {% else %}
+        <p>...No hay resultados para esta búsqueda 😔</p>          
+      {% endif %}    
+    {% endif %}
+  </section>
+  {% endblock %}
+</body>
+</html>

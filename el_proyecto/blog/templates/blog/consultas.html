@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consultas</title>
+</head>
+<body>
+  <a href="{% url 'blog:inicio' %}">🔙 Ir a Inicio</a>
+  <hr>  
+  <h3>Query all</h3>
+  {% for post in posts %}
+    <p>{{ post.titulo }} | {{ post.autor }}</p>
+  {% endfor %}
+  <hr>
+  <h3>Exclude admin</h3>
+  {% for exc in exclude %}
+    <p>{{ exc.titulo }} | {{ exc.autor }}</p>
+  {% endfor %}
+  <hr>
+  <h3>Cantidad posts (count)</h3>
+  <p>{{ posts_count }}</p>
+  <h3>Cantidad categorias</h3>
+  <p>{{ cat_count }}</p>
+  <hr>
+  <h3>Categorias</h3>
+  {% for cat in categorias %}
+    <a>{{ cat.nombre }} <b>|</b> </a>
+  {% endfor %}
+  <hr>
+  <h3>First y Last (admin)</h3>
+  <p>{{ first }}</p>
+  <p>{{ last }}</p>
+  <hr>
+  <h3>Contiene IA (icontains)</h3>
+  <p>{{ contiene }}</p>
+  <hr>
+  <h3>Comienza (startswith)</h3>
+  <p>{{ comienza }}</p>
+  <hr>
+  <h3>Termina (endswith)</h3>
+  <p>{{ termina }}</p>
+  <hr>
+  <h3>Dia</h3>
+  <p>{{ dia }}</p>
+  <hr>
+  <h3>Dentro (in)</h3>
+  <p>{{ dentro }}</p>
+  <hr>
+  <h3>Rango (range)</h3>
+  <p>{{ rango }}</p>
+  <hr>
+  <h3>Desde hijo (ForeignKey)</h3>
+  <p>{{ desde_hijo }}</p>
+  <hr>
+  <h3>Desde padre (ForeignKey)</h3>
+  <p>{{ desde_padre }}</p>
+  <hr>
+  <h3>Select_Related (ForeignKey)</h3>
+  <p>{{ select }}</p>
+  <hr>
+  <h3>Prefetch_Related (ForeignKey)</h3>
+  <p>{{ prefetch }}</p>
+  <hr>  
+</body>
+</html>
