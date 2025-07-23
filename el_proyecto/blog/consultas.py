@@ -1,17 +1,18 @@
 from django.shortcuts import render
 from .models import Post, Categoria
-from django.db.models import Q
+from django.db.models.functions import Length
+from django.db.models import Q, Count, Avg
 
 def consultas(request):
   posts_all = Post.objects.filter(publicado=True)  
   q_exclude = Post.objects.exclude(autor='admin')
   posts_count = Post.objects.count()
-  first_post = posts_all.filter(autor='admin').first()
-  last_post = Post.objects.filter(autor='admin').last()
   category_all = Categoria.objects.all().order_by('nombre')
   cat_count = category_all.count()
+  first_post = posts_all.filter(autor='admin').first()
+  last_post = Post.objects.filter(autor='admin').last()
 
-  contiene = posts_all.filter(titulo__icontains='ia').values('titulo')
+  contiene = posts_all.filter(titulo__icontains='ia')
   comienza = posts_all.filter(autor__startswith='er').values('titulo', 'autor')
   termina = Post.objects.filter(autor__endswith='h.')
   dia = Post.objects.filter(fecha_creacion__day=2)
@@ -25,6 +26,9 @@ def consultas(request):
   print('Select_Related =>', select.query)
   prefetch = Categoria.objects.prefetch_related('posts').all()
   print('Prefetch_Related =>', prefetch.query)
+
+  annotate = Categoria.objects.annotate(total_posts=Count('posts'))
+  aggregate = Post.objects.annotate(contenido_len=Length('contenido')).aggregate(promedio_palabras=Avg('contenido_len'))
 
   return render(request, 'blog/consultas.html', {
     'posts':posts_all,
@@ -44,6 +48,8 @@ def consultas(request):
     'desde_padre':desde_padre,
     'select':select,
     'prefetch':prefetch,
+    'annotate':annotate,
+    'aggregate':aggregate,
   })
 
 def buscar_posts(request):

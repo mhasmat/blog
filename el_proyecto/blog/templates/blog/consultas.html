@@ -33,7 +33,9 @@
   <p>{{ last }}</p>
   <hr>
   <h3>Contiene IA (icontains)</h3>
-  <p>{{ contiene }}</p>
+  {% for cont in contiene %}
+    <p>{{ cont.titulo }} | {{ cont.autor }}</p>
+  {% endfor %}
   <hr>
   <h3>Comienza (startswith)</h3>
   <p>{{ comienza }}</p>
@@ -57,10 +59,23 @@
   <p>{{ desde_padre }}</p>
   <hr>
   <h3>Select_Related (ForeignKey)</h3>
-  <p>{{ select }}</p>
+  <p>Posteos por Autor: </p>
+  {% for sel in select %}
+    <p>{{ sel }}</p>
+  {% endfor %}
   <hr>
   <h3>Prefetch_Related (ForeignKey)</h3>
-  <p>{{ prefetch }}</p>
-  <hr>  
+  {% for pre in prefetch %}
+    <p>Categoría: {{ pre }}</p>
+  {% endfor %}
+  <hr>
+  <h3>Annotate</h3>
+  {% for ann in annotate %}
+    <p>{{ ann.nombre }} => {{ ann.total_posts }} posteos</p>
+  {% endfor %}  
+  <hr>
+  <h3>Aggregate</h3>
+  <p>Promedio de Palabras: {{ aggregate.promedio_palabras|floatformat:2 }}</p>
+  <hr>    
 </body>
 </html>
