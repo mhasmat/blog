@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views, consultas
+from . import views, consultas, utils
 
 # ENDPOINTS
 app_name = 'blog'
@@ -10,5 +10,6 @@ urlpatterns = [
   path('post/<int:id>/', views.detalle_post, name='detalle_post'),
   path('categoria/<str:nombre>/', views.posts_categoria, name='posts_categoria'),
   path('consultas/', consultas.consultas, name='consultas'),
+  path('utils/', utils.utils, name='utils'),
   path('buscar/', consultas.buscar_posts, name='buscar'),
 ]

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Utils</title>
+</head>
+<body>
+  <a href="{% url 'blog:inicio' %}">🔙 Ir a Inicio</a>
+  <hr>  
+  
+  <h3>Select_Related (ForeignKey)</h3>
+  <p>Posteos por Autor: </p>
+  {% for sel in select %}
+    <p>{{ sel }}</p>
+  {% endfor %}
+  <hr>
+  <h3>Prefetch_Related (ForeignKey)</h3>
+  {% for pre in prefetch %}
+    <p>Categoría: {{ pre }}</p>
+  {% endfor %}
+  <hr>
+  <h3>Annotate</h3>
+  {% for ann in annotate %}
+    <p>{{ ann.nombre }} => {{ ann.total_posts }} posteos</p>
+  {% endfor %}  
+  <hr>
+  <h3>Aggregate</h3>
+  <p>Promedio de Palabras: {{ aggregate.promedio_palabras|floatformat:2 }}</p>
+  <hr>
+  <h3>Only</h3>
+  {% for on in only %}
+    <p>{{ on.fecha_creacion }}</p>
+  {% endfor %}  
+  <hr>
+  <h3>Values (diccionarios)</h3>
+  {% for v in values %}
+    <p>{{ v }}</p>
+  {% endfor %}  
+  <hr>
+  <h3>Values List (tuplas)</h3>
+  {% for v_l in values_list %}
+    <p>{{ v_l }}</p>
+  {% endfor %}  
+  <hr>    
+</body>
+</html>
