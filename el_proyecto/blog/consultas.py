@@ -52,20 +52,20 @@ def consultas(request):
     'aggregate':aggregate,
   })
 
-def buscar_posts(request):
-  busqueda = request.GET.get('q', '').strip()
+# def buscar_posts(request):
+#   busqueda = request.GET.get('q', '').strip()
 
-  if busqueda:
-    posts = Post.objects.filter(
-      Q(titulo__icontains=busqueda) | 
-      Q(contenido__icontains=busqueda),
-      publicado=True
-    ).order_by('-fecha_creacion')
-  else:
-    posts = Post.objects.none()
+#   if busqueda:
+#     posts = Post.objects.filter(
+#       Q(titulo__icontains=busqueda) | 
+#       Q(contenido__icontains=busqueda),
+#       publicado=True
+#     ).order_by('-fecha_creacion')
+#   else:
+#     posts = Post.objects.none()
 
-  return render(request, 'blog/busquedas.html', {
-    'posts':posts,
-    'busqueda':busqueda,
-    'resultados':posts.exists(),
-  })
+#   return render(request, 'blog/busquedas.html', {
+#     'posts':posts,
+#     'busqueda':busqueda,
+#     'resultados':posts.exists(),
+#   })

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultados</title>
+</head>
+<body>
+  <h1>Resultados de la consulta:</h1>
+  <p>Tiempo de ejecución: <b>{{ tiempo_ejecucion }} segundos</b></p>
+  <p>Total registros: <b>{{ total_resultados }}</b></p>
+  <ul>
+    {% for res in resultados %}
+      <li>{{ res.titulo }} - {{ res.fecha_creacion }}</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

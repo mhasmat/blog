@@ -11,5 +11,6 @@ urlpatterns = [
   path('categoria/<str:nombre>/', views.posts_categoria, name='posts_categoria'),
   path('consultas/', consultas.consultas, name='consultas'),
   path('utils/', utils.utils, name='utils'),
-  path('buscar/', consultas.buscar_posts, name='buscar'),
+  path('buscar/', utils.buscar_posts, name='buscar'),
+  path('resultados/', utils.medir_tiempo, name='medir-tiempo'),
 ]

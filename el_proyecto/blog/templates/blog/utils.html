@@ -7,8 +7,7 @@
 </head>
 <body>
   <a href="{% url 'blog:inicio' %}">🔙 Ir a Inicio</a>
-  <hr>  
-  
+  <hr>
   <h3>Select_Related (ForeignKey)</h3>
   <p>Posteos por Autor: </p>
   {% for sel in select %}
@@ -42,6 +41,6 @@
   {% for v_l in values_list %}
     <p>{{ v_l }}</p>
   {% endfor %}  
-  <hr>    
+  <hr>
 </body>
 </html>
