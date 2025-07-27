@@ -4,7 +4,7 @@ from django.db.models.functions import Length
 from django.db.models import Q, Count, Avg
 import time
 
-def utils(request):  
+def otras_consultas(request):  
   print('N+1 queries:')
   sin_select = Post.objects.all()  
   print('Sin Select =>', sin_select.query)
@@ -23,7 +23,7 @@ def utils(request):
   values = Post.objects.values('id', 'titulo')
   values_list = Post.objects.values_list('titulo', flat=True)
   
-  return render(request, 'blog/utils.html', {
+  return render(request, 'blog/otras_consultas.html', {
     'select':select,  
     'prefetch':prefetch,
     'annotate':annotate,

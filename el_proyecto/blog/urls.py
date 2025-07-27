@@ -10,7 +10,7 @@ urlpatterns = [
   path('post/<int:id>/', views.detalle_post, name='detalle_post'),
   path('categoria/<str:nombre>/', views.posts_categoria, name='posts_categoria'),
   path('consultas/', consultas.consultas, name='consultas'),
-  path('utils/', utils.utils, name='utils'),
+  path('utils/', utils.otras_consultas, name='otras-consultas'),
   path('buscar/', utils.buscar_posts, name='buscar'),
-  path('resultados/', utils.medir_tiempo, name='medir-tiempo'),
+  path('resultados/', utils.medir_tiempo, name='medir-tiempo'),  
 ]
