@@ -26,3 +26,13 @@ class Comentario(models.Model):
   def __str__(self):
     return f"Comentario de {self.autor} | {self.fecha.date()}"
   
+class Usuario(models.Model):
+  nombre = models.CharField(max_length=100)
+  email = models.EmailField()
+  password = models.CharField(max_length=8, null=True, blank=True)
+  activo = models.BooleanField(default=True)
+
+  def __str__(self):
+    return f"Usuario: {self.nombre} | {self.email}"
+  
+  # {"nombre":"mariancasella","email":"marian@mail.com"}
