@@ -1,7 +1,9 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-from .models import Post, Usuario
-from .serializers import PostSerializer, UsuarioSerializer
+from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth.models import User
+from .models import Post
+from .serializers import PostSerializer, UserSerializer
 
 @api_view(['GET'])
 def lista_posts_api(request):
@@ -10,18 +12,34 @@ def lista_posts_api(request):
   
   return Response(serializer.data)
 
-@api_view(['POST'])
-def crear_usuario(request):
-  serializer = UsuarioSerializer(data=request.data)
+@api_view(['GET'])
+def lista_usuarios_api(request):
+  usuarios = User.objects.all()
+  serializer = UserSerializer(usuarios, many=True)
 
-  if serializer.is_valid():
+  return Response(serializer.data)
+
+@api_view(['POST'])
+def register_api(request):
+  serializer = UserSerializer(data=request.data)
+
+  if serializer.is_valid():    
     serializer.save()
-    return Response(serializer.data, status=201)
+    
+    return Response(serializer.data, status=201)  
   return Response(serializer.errors, status=400)
 
 @api_view(['GET'])
-def lista_usuarios(request):
-  usuarios = Usuario.objects.all()
-  serializer = UsuarioSerializer(usuarios, many=True)
+@permission_classes([IsAuthenticated])
+def perfil_usuario_api(request):
+  """
+  Devuelve datos del perfil del usuario autenticado
+  """
+  user = request.user
 
-  return Response(serializer.data)
+  return Response({
+    'mensaje': f'Hola, {user.username}',
+    'username': user.username,
+    'email': user.email,
+    'id': user.id
+  })
